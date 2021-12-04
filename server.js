@@ -30,16 +30,20 @@ app.get("/stats", (req, res) => {
     res.sendFile(__dirname + "/public/stats.html");
 });
 
-// * All other pages are sent to the homepage
-app.get("*", (req, res) => {
-    res.sendFile(__dirname + "/public/index.html");
-});
-
 // * API Routes
 
 app.get("/api/workouts", (req, res) => {
-    db.Workout.find({})
+    db.Workout.aggregate([
+        {
+            $addFields: {
+                totalDuration: {
+                    $sum: "$exercises.duration",
+                },
+            },
+        },
+    ])
         .then((dbWorkout) => {
+            console.log({ dbWorkout });
             res.json(dbWorkout);
         })
         .catch((err) => {
@@ -71,15 +75,24 @@ app.post("/api/workouts", ({ body }, res) => {
         });
 });
 
-// app.get("/api/workouts/range", (req, res) => {
-//     db.Workout.find({})
-//         .then((dbWorkout) => {
-//             res.json(dbWorkout);
-//         })
-//         .catch((err) => {
-//             res.json(err);
-//         });
-// });
+app.get("/api/workouts/range", (req, res) => {
+    db.Workout.aggregate([
+        {
+            $addFields: {
+                totalDuration: {
+                    $sum: "$exercises.duration",
+                },
+            },
+        },
+    ])
+        .then((dbWorkout) => {
+            res.json(dbWorkout);
+        })
+        .catch((err) => {
+            res.json(err);
+        });
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
