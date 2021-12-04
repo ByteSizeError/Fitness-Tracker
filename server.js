@@ -36,6 +36,31 @@ app.get("*", (req, res) => {
 });
 
 // * API Routes
+
+app.get("/api/workouts", (req, res) => {
+    db.Workout.find({})
+        .then((dbWorkout) => {
+            res.json(dbWorkout);
+        })
+        .catch((err) => {
+            res.json(err);
+        });
+});
+
+app.put("/api/workouts/:id", ({ body, params }, res) => {
+    db.Workout.findByIdAndUpdate(
+        params.id,
+        { $push: { exercises: body } },
+        { new: true }
+    )
+        .then((dbWorkout) => {
+            res.json(dbWorkout);
+        })
+        .catch((err) => {
+            res.json(err);
+        });
+});
+
 app.post("/api/workouts", ({ body }, res) => {
     db.Workout.create(body)
         .then((dbWorkout) => {
@@ -46,60 +71,15 @@ app.post("/api/workouts", ({ body }, res) => {
         });
 });
 
-app.put("/api/workouts/:id", ({ body, params }, res) => {
-    console.log(body, params);
-    db.Workout.findByIdAndUpdate(
-        params.id,
-        { $push: { exercises: body } },
-        { new: true }
-    )
-        .then((dbWorkout) => {
-            console.log({ dbWorkout });
-            res.json(dbWorkout);
-        })
-        .catch((err) => {
-            console.log({ err });
-            res.json(err);
-        });
-});
-
-// * Stats API
-app.get("/api/workouts/range", (req, res) => {
-    db.Workout.find({})
-        .then((dbWorkout) => {
-            res.json(dbWorkout);
-        })
-        .catch((err) => {
-            res.json(err);
-        });
-});
-// db.Workout.create()
-//     .then((dbWorkout) => {
-//         console.log(dbWorkout);
-//     })
-//     .catch(({ message }) => {
-//         console.log(message);
-//     });
-
-// app.get("api/exercise", (req, res) => {
-//     res.
-//     // db.Exercise.find({})
-//     //     .then((dbExercise) => {
-//     //         res.json(dbExercise);
-//     //     })
-//     //     .catch((err) => {
-//     //         res.json(err);
-//     //     });
+// app.get("/api/workouts/range", (req, res) => {
+//     db.Workout.find({})
+//         .then((dbWorkout) => {
+//             res.json(dbWorkout);
+//         })
+//         .catch((err) => {
+//             res.json(err);
+//         });
 // });
-
-// app.get("/populateduser", (req, res) => {
-//     // TODO
-//     // =====
-//     // Write the query to grab the documents from the User collection,
-//     // and populate them with any associated Notes.
-//     // TIP: Check the models out to see how the Notes refers to the User
-// });
-
 // Start the server
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
