@@ -85,14 +85,9 @@ app.get("/api/workouts/range", (req, res) => {
                 },
             },
         },
-        {
-            $match: {
-                $expr: {
-                    $gte: ["$day", { $add: [new Date(), -604800000] }],
-                },
-            },
-        },
     ])
+        .sort({ day: -1 })
+        .limit(7)
         .sort({ day: 1 })
         .then((dbWorkout) => {
             res.json(dbWorkout);
