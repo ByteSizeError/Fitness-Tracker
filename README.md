@@ -2,6 +2,8 @@
 
 ## Description
 
+This project is a workout tracker that can log multiple exercies in a workout. When tracking a workout you can choose from two categories resistance or cardio, for a resistance exercise you can track the name, type, weight, sets, reps and duration. For a cardio exercise you can track the distance. My motivation for this project was to help track my workouts daily and able to see my progress throught the week. This project helped me improve my skills on MongoDB and Mongoose as well as setting up and using MongoDB Atlas on Heroku.
+
 ## Link to the Project
 
 -   [GitHub Repository][github-repo]
@@ -24,80 +26,48 @@
     -   Make sure your path is proper
     -   Copy the git command to where you want to clone the repository
     ```
-    git clone git@github.com:ByteSizeError/Tech-Blog.git
+    git clone git@github.com:ByteSizeError/Fitness-Tracker.git
     ```
-    -   You will see a `Tech-Blog` folder.
+    -   You will see a `Fitness-Tracker` folder.
 -   An alternate document to clone a repo can also be found at [github][github-link]
 
 ## Project Demo
 
-### Link to Website
-
-### Sign Up Page
-
-![sign up][01-signup-image]
-
--   Users can create a new account on this page
-
-### Login
-
-![login][02-login-image]
-
--   If user have existing account they can sign in
-
 ### Homepage
 
-![homepage][03-homepage-image]
+![homepage][01-homepage]
 
--   Shows posts made by everyone
+-   Shows the latest workout the user has added to
 
-### Dashboard
+### Adding Exercise
 
-![dashboard][04-dashboard-image]
+![add exercise][02-add-exercise]
 
--   Shows posts made by the user
--   Click `New Post` button to create a post
+-   Here the user has an option to choose between resistance or cardio exercise to add
 
-### Create Post
+### Adding Resistance Workout
 
-![create post][05-create-post-image]
+![resistance exercise][03-add-resistance]
 
--   Title for the post title
--   Content for the post content
--   Click `Create` button to post
--   Click `Cancel` button to go back
+-   For the resistance exercise the user has to fill in the name, weight, sets, reps, and duration of the exercise
 
-![dashboard after post][06-dashboard-after-post-image]
+### Adding Cardio Workout
 
--   Shows the new post by the user
--   Click `Edit Post` button to edit the existing post
+![cardio exercise][04-add-cardio]
 
-### Edit Post
+-   For the cardio exercise the user has to fill in the name, distance, and duration of the exercise
 
-![edit post][07-edit-post-image]
+### Last Workout Updated
 
--   Here the user can edit all fields of the post
--   Click `Update` button to update the post
--   Click `Delete` button to delete the post
--   Click `Cancel` button to go back
+![last workout][05-last-workout]
 
-### Create Comment
+-   Shows the users the last workout they added
 
-![create comment][08-create-comment-image]
+### Stats Page
 
--   The comment box is for user to input their comment
--   The `Submit` button to send their comment
+![stats page][06-stats-page]
 
-![comments page][09-comments-page-image]
-
--   The `Update` button can be used to update the existing comment
--   The `Delete` button to delete the comment
-
-### Delete Comment
-
-![delete comment][10-delete-comment-image]
-
--   The comment is now deleted
+-   Shows the users their duration for the cardio on the left and the total amount of weights for each workout on the right
 
 ## Usage
 
@@ -209,6 +179,12 @@ For questions you can reach me at https://github.com/ByteSizeError.
 
 You can also reach me at jimmyz0622@gmail.com for additional questions.
 
+[01-homepage]: https://github.com/ByteSizeError/Fitness-Tracker/blob/c31708ad4331fe5d3153258d1e78673dec3eba2b/assets/images/01-homepage.png
+[02-add-exercise]: https://github.com/ByteSizeError/Fitness-Tracker/blob/c31708ad4331fe5d3153258d1e78673dec3eba2b/assets/images/02-add-exercise.png
+[03-add-resistance]: https://github.com/ByteSizeError/Fitness-Tracker/blob/c31708ad4331fe5d3153258d1e78673dec3eba2b/assets/images/03-add-resistance.png
+[04-add-cardio]: https://github.com/ByteSizeError/Fitness-Tracker/blob/c31708ad4331fe5d3153258d1e78673dec3eba2b/assets/images/04-add-cardio.png
+[05-last-workout]: https://github.com/ByteSizeError/Fitness-Tracker/blob/c31708ad4331fe5d3153258d1e78673dec3eba2b/assets/images/05-last-workout.png
+[06-stats-page]: https://github.com/ByteSizeError/Fitness-Tracker/blob/c31708ad4331fe5d3153258d1e78673dec3eba2b/assets/images/06-stats-page.png
 [deployed-link]: https://still-tundra-24344.herokuapp.com/
 [faq]: https://www.contributor-covenant.org/faq
 [github-link]: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository
